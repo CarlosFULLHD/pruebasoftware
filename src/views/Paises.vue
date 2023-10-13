@@ -2,7 +2,7 @@
     <div v-if="country">
       <h1>Seleccion de PAISES - COUNTRY</h1>
         <div class="form-group">
-          <label for="id">Etiqueta </label>
+          <label for="id">Paises </label>
 
           <select id="id" v-model="country.id">
             <option
@@ -17,7 +17,7 @@
 
         <h1>Seleccion de DEPARTAMENTOS - STATE</h1>
         <div class="form-group">
-          <label for="id">Etiqueta </label>
+          <label for="id">Departamentos </label>
 
           <select id="id" v-model="state.id">
             <option
@@ -32,7 +32,7 @@
 
         <h1>Seleccion de CIUDADES - CITy</h1>
         <div class="form-group">
-          <label for="id">Etiqueta </label>
+          <label for="id">Ciudades </label>
 
           <select id="id" v-model="city.id">
             <option
@@ -52,7 +52,6 @@
   
   <script>
   export default {
-    props: ["taskId"],
     data() {
       return {
         country: {
@@ -81,7 +80,7 @@
             console.error("Error fetching Country:", error);
           });
       },
-      fetchLabels() {
+      fetchSTATE() {
         fetch(`http://localhost:8080/api/v1/state/country/${this.id}`)
           .then((res) => {
             if (!res.ok) {
@@ -91,13 +90,13 @@
           })
           .then((data) => {
             this.labels = data;
-            console.log("country:", data);
+            console.log("state:", data);
           })
           .catch((error) => {
-            console.error("Error fetching country:", error);
+            console.error("Error fetching state:", error);
           });
       },
-      fetchCOUNTRY() {
+      fetchCITY() {
         fetch(`GET http://localhost:8080/api/v1/city/state/${this.id}`)
           .then((res) => {
             if (!res.ok) {
@@ -107,10 +106,10 @@
           })
           .then((data) => {
             this.country = data;
-            console.log("Data state", data);
+            console.log("Data city", data);
           })
           .catch((error) => {
-            console.error("Error fetching state:", error);
+            console.error("Error fetching city:", error);
           });
       },
 
